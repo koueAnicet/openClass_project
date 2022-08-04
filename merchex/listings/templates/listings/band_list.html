@@ -1,0 +1,23 @@
+
+{% extends 'listings/base.html' %}
+
+{% block content %}
+        <h1>Hello Django !</h1>
+
+        <p>Mes groupes préférés sont :</p>
+        <!-- TODO : liste des groupes -->
+        <ul>
+            {% for band in bands %}
+            
+                {% if band.name %}
+                <li><a href="{% url 'band-detail' band.id %}">{{ band.name|upper }}</a></li>
+                {% endif %}
+                {% for listing in band.listing_set.all %}
+        <ul>
+            <li><a href="{% url 'listing-detail' band.id %}">{{listing}}</a></li>
+        </ul>
+        {% endfor %}
+            {% endfor %}
+        </ul>
+        
+{% endblock %}

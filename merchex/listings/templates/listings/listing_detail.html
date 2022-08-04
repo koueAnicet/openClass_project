@@ -1,0 +1,39 @@
+
+{% extends 'listings/base.html' %}
+
+{% block content %}
+    {% if listing_annonce %}
+        <h2>{{ listing_annonce.title }}</h2>
+
+
+        <ul>
+            {% comment %} Django a ajouté la méthode get_genre_display pour convertir les valeurs de la base de données genre 
+            dans leur format d'affichage (par exemple Hip Hop ). {% endcomment %}
+            <li>description : {{ listing_annonce.description  }}</li>
+            <li>Année de sortie: {{ listing_annonce.year }}</li>
+            <li>Sold : {{ listing_annonce.sold|yesno }}</li>
+            {% if listing_annonce.offtypesicial_homepage %}
+            <li>
+                <a href="{{ listing_annonce.band.name }}">{{ listing_annonce.band.name  }}</a>
+            </li>
+            {% endif %}
+        </ul>
+    {% else %}
+        <h2>{{ listing.title }}</h2>
+    
+    <ul>
+        {% comment %} Django a ajouté la méthode get_genre_display pour convertir les valeurs de la base de données genre 
+        dans leur format d'affichage (par exemple Hip Hop ). {% endcomment %}
+        <li>description : {{ listing.description  }}</li>
+        <li>Année de sortie: {{ listing.year }}</li>
+        <li>Sold : {{ listing.sold|yesno }}</li>
+        {% if listing.offtypesicial_homepage %}
+        <li>
+            <a href="{{ listing.band.name }}">{{ listing.band.name  }}</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    
+    <a href="{% url 'listing-list' %}">Retour à tous les listings</a>
+{% endblock content %}
