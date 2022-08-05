@@ -2,8 +2,8 @@
 
 {% block content %}
         <h1>Hello Django !</h1>
-
-        <p>Mes listings préférés sont :</p>
+        <a href="{% url 'listing-create' %}">Create new listing</a>
+        <p>Mes listes préférées sont :</p>
         <!-- TODO : liste des groupes -->
         <ul>
             {% for listing in listings %}

@@ -24,9 +24,13 @@ urlpatterns = [
         views.band_detail, 
         name='band-detail'
     ), # ajouter ce motif sous notre autre motif de groupes
-    path('listings/', views.listing_list,
-        name='listing-list'
-        ),
+
+    path('bands/<int:id>/change/', views.band_update, name='band-update'),
+    path('bands/add/', views.band_create, name='band-create'),
+    path('bands/<int:id>/delete/', views.band_delete, name='band-delete'),
+    path('listings/add/', views.listing_create, name='listing-create'),
+
+    path('listings/', views.listing_list,name='listing-list'),
     path('listings/<int:listing_id>/',
         views.listing_detail, 
         name='listing-detail'
